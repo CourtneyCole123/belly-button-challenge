@@ -42,7 +42,7 @@ This dataset revealed that a small handful of microbial species (also called ope
 
 - Chart uses otu_labels for text values
 
-<Insert Chart Here>
+  <Insert Chart Here>
 
 <h3> Metadata and Deployment </h3>
 
