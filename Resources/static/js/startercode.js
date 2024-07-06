@@ -9,7 +9,7 @@ function buildMetadata(sample) {
 
 
     // Use d3 to select the panel with id of `#sample-metadata`
-
+  
 
     // Use `.html("") to clear any existing metadata
 
