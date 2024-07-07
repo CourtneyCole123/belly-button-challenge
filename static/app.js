@@ -3,6 +3,7 @@ const url = "https://static.bc-edx.com/data/dl-1-2/m14/lms/starter/samples.json"
 
 d3.json(url).then(CreateMetaDataAndPanel)
 d3.json(url).then(CreateCharts)
+d3.json(url).then(CreateDropdown)
     
 function CreateMetaDataAndPanel(data){
   // get the metadata field
@@ -105,6 +106,21 @@ function CreateCharts(data){
 
 // Plot Bubble Chart
   Plotly.newPlot('bubble', bubbledata, bubblelayout);
+}
+
+//Create Dropdown Menu
+function CreateDropdown(data){
+  
+  // Grab the list of ID names
+  let names = data.names;
+
+  // Select the dropdown with id of "#selDataset"
+  let dropdown = d3.select("#selDataSet");
+
+  // List sample ids to populate the select options
+  Object.values(names).forEach(item => {
+  dropdown.append('option').text(item)
+  });
 }
 
 // Create Filter Functions
