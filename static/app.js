@@ -5,15 +5,18 @@ d3.json(url).then(CreateMetaDataAndPanel)
 d3.json(url).then(CreateCharts)
 d3.json(url).then(CreateDropdown)
     
-function CreateMetaDataAndPanel(data){
+function CreateMetaDataAndPanel(data,id=940){
   // get the metadata field
   let MetaData = data.metadata;
 
   // Filter the metadata for the object with the desired sample number
-  let filteredData = MetaData.filter(FilteredData)
+  let filteredData = MetaData.filter(d=>
+    FilteredData(d,id))
 
     // Use d3 to select the panel with id of `#sample-metadata`
   let panel = d3.selectAll('#sample-metadata')
+
+  panel.html("")
 
     // Fill in the panel
   filteredData.forEach(data =>{
@@ -28,7 +31,7 @@ function CreateMetaDataAndPanel(data){
     })
 }
     
-function CreateCharts(data){
+function CreateCharts(data,id=940){
 // Create Arrays
   let SampleIDs = []
   let SampleValues = []
@@ -37,7 +40,8 @@ function CreateCharts(data){
   let SampleData = data.samples
 
 // Filter Sample Data to Selected Filter Value
-  let samplelabels = SampleData.filter(FilteredSample)
+  let samplelabels = SampleData.filter(d=>
+    FilteredSample(d,id))
 
 // Get the Label Data
   let labels = samplelabels[0].otu_ids
@@ -113,21 +117,26 @@ function CreateDropdown(data){
   
   // Grab the list of ID names
   let names = data.names;
-
+  
   // Select the dropdown with id of "#selDataset"
-  let dropdown = d3.select("#selDataSet");
+  let dropdown = d3.select("#selDataset");
 
   // List sample ids to populate the select options
-  Object.values(names).forEach(item => {
+  names.forEach(item => {
   dropdown.append('option').text(item)
   });
 }
-
+function optionChanged(id){
+  d3.json(url).then(d=>{
+    CreateMetaDataAndPanel(d,id)
+    CreateCharts(d,id)
+  })
+}
 // Create Filter Functions
-function FilteredData(data){
-  return data.id == 940
+function FilteredData(data,id=940){
+  return data.id == id
 }
 
-function FilteredSample(data){
-  return data.id == 940
+function FilteredSample(data,id=940){
+  return data.id == id
   }
