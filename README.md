@@ -22,7 +22,7 @@ This dataset revealed that a small handful of microbial species (also called ope
 
 - Chart uses otu_labels as the tooltip
 
-<Insert Chart Here>
+  ![image](https://github.com/CourtneyCole123/belly-button-challenge/assets/162069113/772a6048-8c44-4ef2-bed3-3aadf7d0bba3)
 
 <h3> Bubble Charts </h3>
 
@@ -42,7 +42,7 @@ This dataset revealed that a small handful of microbial species (also called ope
 
 - Chart uses otu_labels for text values
 
-  <Insert Chart Here>
+  ![image](https://github.com/CourtneyCole123/belly-button-challenge/assets/162069113/a6b68241-a906-4eb8-8a95-fe9ced1aaaa1)
 
 <h3> Metadata and Deployment </h3>
 
@@ -51,7 +51,3 @@ This dataset revealed that a small handful of microbial species (also called ope
 - Metadata initializes without error
 
 - Metadata updates when a new sample is selected
-
-- App Successfully Deployed to Github Pages
-
-<insert snapshot & link to Github pages here>
